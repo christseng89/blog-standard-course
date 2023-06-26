@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -16,7 +16,7 @@
     "@next/font": "^13.1.6",
     "@webdeveducation/next-verify-stripe": "^1.0.1",
     "micro-cors": "^0.1.1",
-    "mongodb": "^4.13.0",
+    "mongodb": "5.6",
     "next": "13.1.6",
     "numeral": "^2.0.6",
     "openai": "^3.2.1",
@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
+    "cross-env": "^7.0.3",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
     "postcss": "^8.4.21",

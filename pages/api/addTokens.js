@@ -1,5 +1,4 @@
 import { getSession } from '@auth0/nextjs-auth0';
-import clientPromise from '../../lib/mongodb';
 import stripeInit from 'stripe';
 
 const stripe = stripeInit(process.env.STRIPE_SECRET_KEY);
@@ -32,7 +31,10 @@ export default async function handler(req, res) {
     },
   });
 
-  console.log('user: ', user);
+  console.log("user info: ",{
+    email: user.email,
+    'email Verified': user.email_verified
+  });
 
   res.status(200).json({ session: checkoutSession });
 }

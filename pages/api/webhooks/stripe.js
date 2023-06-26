@@ -29,10 +29,12 @@ const handler = async (req, res) => {
       console.log('ERROR: ', e);
     }
 
+    console.log("Event Type: ", event.type);
     switch (event.type) {
       case 'payment_intent.succeeded': {
         const client = await clientPromise;
         const db = client.db('BlogStandard');
+        console.log('Client ...: ', client, "DB ...: ", db);
 
         const paymentIntent = event.data.object;
         const auth0Id = paymentIntent.metadata.sub;
@@ -55,6 +57,8 @@ const handler = async (req, res) => {
             upsert: true,
           }
         );
+        console.log('USER PROFILE: ', userProfile);
+        break;
       }
       default:
         console.log('UNHANDLED EVENT: ', event.type);
