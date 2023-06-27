@@ -33,7 +33,7 @@ const handler = async (req, res) => {
     switch (event.type) {
       case 'payment_intent.succeeded': {
         const client = await clientPromise;
-        const db = client.db('BlogStandard');
+        const db = client.db(process.env.MONGODB_NAME);
         console.log('Client ...: ', client, "DB ...: ", db);
 
         const paymentIntent = event.data.object;

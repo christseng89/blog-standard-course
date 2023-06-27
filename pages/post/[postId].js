@@ -102,7 +102,7 @@ export const getServerSideProps = withPageAuthRequired({
     const props = await getAppProps(ctx);
     const userSession = await getSession(ctx.req, ctx.res);
     const client = await clientPromise;
-    const db = client.db('BlogStandard');
+    const db = client.db(process.env.MONGODB_NAME);
     const user = await db.collection('users').findOne({
       auth0Id: userSession.user.sub,
     });
